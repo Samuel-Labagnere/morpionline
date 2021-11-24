@@ -10,6 +10,21 @@ function App() {
         <Route exact path="/">
           <WelcomeComponent />
         </Route>
+        {/* <Route exact path="/account">
+          <Account />
+        </Route> */}
+        {/* <Route exact path="/signin">
+          <Signin />
+        </Route> */}
+        {/* <Route exact path="/signup">
+          <Signup />
+        </Route> */}
+        {/* <Route exact path="/play">
+          <Play />
+        </Route> */}
+        {/* <Route exact path="/shop">
+          <Shop />
+        </Route> */}
         <Route path="/">
           {/* <Error404 /> */}
           ERROR 404

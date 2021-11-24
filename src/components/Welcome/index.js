@@ -5,7 +5,8 @@ import React from 'react'
 const Welcome = () => {
     return(
         <div>
-            <h2>Welcome !</h2>
+            <h2 style={{textDecoration: 'underline'}}>Welcome to Morpionline!</h2>
+            <p style={{fontStyle: 'italic'}}>The best game you'll ever play. <br/>(An MMI associate degree project)</p>
         </div>
     )
 }
