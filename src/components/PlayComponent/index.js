@@ -8,6 +8,7 @@ const PlayComponent = () => {
     const [timer, setTimer] = React.useState(60);
     const [timerOn, setTimerOn] = React.useState(false);
     const [timerDone, setTimerDone] = React.useState(false);
+    
     useEffect(() => {
         setTimeout(
             () => {
