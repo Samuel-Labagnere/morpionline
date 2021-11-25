@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import WelcomeComponent from "./components/Welcome";
 import SigninComponent from "./components/SigninComponent";
 import SignupComponent from "./components/SignupComponent";
+import PlayComponent from "./components/PlayComponent";
 import './App.css';
 
 function App() {
@@ -22,9 +23,9 @@ function App() {
         <Route exact path="/signup">
           <SignupComponent />
         </Route>
-        {/* <Route exact path="/play">
+        <Route exact path="/play">
           <PlayComponent />
-        </Route> */}
+        </Route>
         {/* <Route exact path="/shop">
           <ShopComponent />
         </Route> */}
