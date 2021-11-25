@@ -1,9 +1,10 @@
 import React from 'react'
 import "./style.css"
 import { Link } from 'react-router-dom'
+import Connection from "../SigninComponent/index.js"
 
 const Header = () => {
-    const isUserConnected = React.useState(false)
+    const isUserConnected = false
 
     return(
         <div id="header">
@@ -15,8 +16,8 @@ const Header = () => {
                     </div> 
                 ) : (
                     <div id="header-links">
-                        <Link id="signin" to="/signin">Sign-in</Link>
-                        <Link to="/signup">Sign-up</Link>
+                        <Link id="signin" to="/signin">Sign in</Link>
+                        <Link to="/signup">Sign up</Link>
                     </div> 
                 )}
         </div>
