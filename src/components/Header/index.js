@@ -3,7 +3,7 @@ import "./style.css"
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-    const [isUserConnected, setIsUserConnected] = React.useState(false)
+    const isUserConnected = React.useState(false)
 
     return(
         <div id="header">
