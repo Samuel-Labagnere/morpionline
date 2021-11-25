@@ -1,11 +1,12 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header"
 import WelcomeComponent from "./components/Welcome"
 import './App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Switch>
         <Route exact path="/">
           <WelcomeComponent />
