@@ -42,7 +42,7 @@ const PlayComponent = () => {
                 <p>
                     <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
                     {
-                        timerDone ? ' ' + 'Time\'s over!' : ' ' + timer
+                        timerDone ? ' Time\'s over!' : ' ' + timer
                     }
                 </p>
             </div>
