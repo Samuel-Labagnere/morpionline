@@ -6,6 +6,19 @@
     margin-bottom: 50px;
 }
 
+#header-title{
+    text-decoration: none;
+    color: black;
+}
+#header-title:visited{
+    color: black;
+}
+#header-title:hover{
+    color: #1e85ca  ;
+    font-weight: 900;
+    text-shadow: #1e85ca 0px 0px 1.5px ;
+}
+
 #signin{
     margin-right: 2ch;
 }
@@ -16,6 +29,15 @@
     border-radius: 6px;
     padding: 4px;
     background-color: #1e85ca;
+    text-decoration: none;
+    font-weight: 500;
+}
+#header-links a:hover{
+    color: #1e85ca;
+    border: 2px solid #1e85ca;
+    border-radius: 6px;
+    padding: 4px;
+    background-color: white;
     text-decoration: none;
     font-weight: 500;
 }

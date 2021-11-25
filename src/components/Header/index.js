@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
     return(
         <div id="header">
-            <h1>MORPIONLINE</h1>
+            <Link id="header-title" to="/"><h1>MORPIONLINE</h1></Link>
             <div id="header-links">
                 <Link id="signin" to="/signin">Sign-in</Link>
                 <Link to="/signup">Sign-up</Link>

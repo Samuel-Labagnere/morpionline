@@ -1,6 +1,8 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/Header"
-import WelcomeComponent from "./components/Welcome"
+import Header from "./components/Header";
+import WelcomeComponent from "./components/Welcome";
+import SigninComponent from "./components/SigninComponent";
+import SignupComponent from "./components/SignupComponent";
 import './App.css';
 
 function App() {
@@ -12,19 +14,19 @@ function App() {
           <WelcomeComponent />
         </Route>
         {/* <Route exact path="/account">
-          <Account />
+          <AccountComponent />
         </Route> */}
-        {/* <Route exact path="/signin">
-          <Signin />
-        </Route> */}
-        {/* <Route exact path="/signup">
-          <Signup />
-        </Route> */}
+        <Route exact path="/signin">
+          <SigninComponent />
+        </Route>
+        <Route exact path="/signup">
+          <SignupComponent />
+        </Route>
         {/* <Route exact path="/play">
-          <Play />
+          <PlayComponent />
         </Route> */}
         {/* <Route exact path="/shop">
-          <Shop />
+          <ShopComponent />
         </Route> */}
         <Route path="/">
           {/* <Error404 /> */}
