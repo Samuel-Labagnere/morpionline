@@ -14,7 +14,7 @@ const setTimeOver = (value) => {
     timeOver = value
 }
 
-const getRandomInt = (max) => {
+function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
@@ -42,58 +42,47 @@ const Square = ({timeStop, party}) => {
                 setSquareAlreadyClicked(squareClicked)
                 value[index] = currentPlayer
                 setSquareValue(value)
-                check()
-            }
-            aiPlay()
-        }
-    }
-
-    const aiPlay = () => {
-        const value = squareValue
-        const squareClicked = squareAlreadyClicked
-        if(party === "ai" && !victory && !lose && !timeOut){
-            setAiIsPlaying(true)
-            setTimeout(
-                () => {
-                    let i = getRandomInt(9)
-                    while(squareAlreadyClicked[i] == true){
-                        i = getRandomInt(9);
+                let victory1 = value[0] !== null && value[0] === value[1] && value[0] === value[2]
+                let victory2 = value[0] !== null && value[0] === value[4] && value[0] === value[8]
+                let victory3 = value[0] !== null && value[0] === value[3] && value[0] === value[6]
+                let victory4 = value[1] !== null && value[1] === value[4] && value[1] === value[7]
+                let victory5 = value[3] !== null && value[3] === value[4] && value[3] === value[5]
+                let victory6 = value[6] !== null && value[6] === value[7] && value[6] === value[8]
+                let victory7 = value[6] !== null && value[6] === value[4] && value[6] === value[2]
+                let victory8 = value[2] !== null && value[2] === value[5] && value[2] === value[8]
+                let victoryComplete = victory1 || victory2 || victory3 || victory4 || victory5 || victory6 || victory7 || victory8
+                let lost = (value[0] && value[1] && value[2] && value[3] && value[4] && value[5] && value[6] && value[7] && value[8]) !== null
+                if(victoryComplete){
+                    setVictory(true)
+                    timeStop()
+                }else if(!victoryComplete && lost){
+                    setLose(true)
+                    timeStop()
+                }else{
+                    if(party === "ai"){
+                        setAiIsPlaying(true)
+                        setTimeout(
+                            () => {
+                                let i = getRandomInt(9)
+                                while(squareAlreadyClicked[i] == true){
+                                    i = getRandomInt(9);
+                                }
+                                squareClicked[i] = true
+                                setSquareAlreadyClicked(squareClicked)
+                                value[i] = "O"
+                                setSquareValue(value)
+                                setAiIsPlaying(false)
+                            },
+                            1000 // 1 seconde de délai
+                        );
+                    }else{
+                        setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
                     }
-                    squareClicked[i] = true
-                    setSquareAlreadyClicked(squareClicked)
-                    value[i] = "O"
-                    setSquareValue(value)
-                    setAiIsPlaying(false)
-                },
-                1000 // 1 seconde de délai
-            );
-            check()
+                }
+            }
         }
     }
 
-    const check = () => {
-        const value = squareValue
-        let victory1 = value[0] !== null && value[0] === value[1] && value[0] === value[2]
-        let victory2 = value[0] !== null && value[0] === value[4] && value[0] === value[8]
-        let victory3 = value[0] !== null && value[0] === value[3] && value[0] === value[6]
-        let victory4 = value[1] !== null && value[1] === value[4] && value[1] === value[7]
-        let victory5 = value[3] !== null && value[3] === value[4] && value[3] === value[5]
-        let victory6 = value[6] !== null && value[6] === value[7] && value[6] === value[8]
-        let victory7 = value[6] !== null && value[6] === value[4] && value[6] === value[2]
-        let victory8 = value[2] !== null && value[2] === value[5] && value[2] === value[8]
-        let victoryComplete = victory1 || victory2 || victory3 || victory4 || victory5 || victory6 || victory7 || victory8
-        let lost = (value[0] && value[1] && value[2] && value[3] && value[4] && value[5] && value[6] && value[7] && value[8]) !== null
-        if(victoryComplete){
-            setVictory(true)
-            timeStop()
-        }else if(!victoryComplete && lost){
-            setLose(true)
-            timeStop()
-        }else if(party !== "ai"){
-            setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
-        }
-    }
- 
     if(victory){
         msg = <p>{currentPlayer} won!</p>
     }else if(timeOut){

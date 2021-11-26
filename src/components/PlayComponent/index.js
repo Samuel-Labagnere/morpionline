@@ -6,6 +6,8 @@ import "./style.css"
 const PlayComponent = () => {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
+    const [isPlayingFriend, setIsPlayingFriend] = React.useState(false);
+    const [isPlayingAI, setIsPlayingAI] = React.useState(false);
 
     const [timer, setTimer] = React.useState(1000);
     const [timerOn, setTimerOn] = React.useState(false);
@@ -32,29 +34,49 @@ const PlayComponent = () => {
         setTimerOn(false)
     }
 
-    const Start = () => {
+    const Start = (party) => {
         setIsPlaying(true)
         setTimerOn(true)
+        if(party === 'friend'){
+            setIsPlayingFriend(true)
+        }else if(party === 'ai'){
+            setIsPlayingAI(true)
+        }
     }
 
     if(!isPlaying){
         return(
             <div id="playComponent">
-                <ButtonComponent type="button" onClick={Start} value="Play" />
+                <ButtonComponent type="button" onClick={() => Start('friend')} value="Player VS Player" style={{marginBottom: '15px'}} /><br />
+                <ButtonComponent type="button" onClick={() => Start('ai')} value="Player VS AI" />
             </div>
         )
     }else{
-        return(
-            <div id="playComponent">
-                <p>
-                    <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
-                    {
-                        timerDone ? ' Time\'s over!' : ' ' + timer
-                    }
-                </p>
-                <Square timeStop={timeStop} />
-            </div>
-        )
+        if(isPlayingFriend){
+            return(
+                <div id="playComponent">
+                    <p>
+                        <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
+                        {
+                            timerDone ? ' Time\'s over!' : ' ' + timer
+                        }
+                    </p>
+                    <Square timeStop={timeStop} party="friend" />
+                </div>
+            )
+        }else if(isPlayingAI){
+            return(
+                <div id="playComponent">
+                    <p>
+                        <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
+                        {
+                            timerDone ? ' Time\'s over!' : ' ' + timer
+                        }
+                    </p>
+                    <Square timeStop={timeStop} party="ai" />
+                </div>
+            )
+        }
     }
 }
 

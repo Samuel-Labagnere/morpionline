@@ -5,9 +5,10 @@ import "./style.css"
 
 const Welcome = () => {
     return(
-        <div>
+        <div id="home">
             <h2 style={{textDecoration: 'underline'}}>Welcome to Morpionline!</h2>
-            <p style={{fontStyle: 'italic'}}>The best game you'll ever play. <br/>(An MMI associate degree project)</p>
+            <p>A Tic Tac Toe game.<br /><span style={{fontStyle: 'italic'}}>An MMI associate degree project.</span></p>
+            <p>Play with a friend on the same device or against the computer !</p>
             <br />
             <ButtonComponent type="link" linksTo="/play" value="Start a new game" />
         </div>
