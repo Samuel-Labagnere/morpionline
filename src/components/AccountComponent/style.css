@@ -1,0 +1,12 @@
+#profile-img {
+    background-color: chartreuse;
+    width: 200px;
+    height: 200px;
+}
+#player-infos {
+    width: 30vw;
+    height: auto;
+    background-color: rgb(247, 247, 247);
+    padding: 20;
+}
+/* #player-stats{} */
