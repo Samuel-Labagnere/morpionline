@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Square from './square'
+import Square, { setTimeOver, hasWon } from './Square'
 import ButtonComponent from '../ButtonComponent'
 import "./style.css"
 
@@ -7,7 +7,7 @@ const PlayComponent = () => {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
 
-    const [timer, setTimer] = React.useState(60);
+    const [timer, setTimer] = React.useState(5);
     const [timerOn, setTimerOn] = React.useState(false);
     const [timerDone, setTimerDone] = React.useState(false);
     
@@ -18,6 +18,7 @@ const PlayComponent = () => {
                     if(timer === 1){
                         setTimer(timer - 1)
                         setTimerDone(true)
+                        setTimeOver(true)
                     }else{
                         setTimer(timer - 1)
                     }
@@ -47,21 +48,7 @@ const PlayComponent = () => {
                         timerDone ? ' Time\'s over!' : ' ' + timer
                     }
                 </p>
-                <div class="div-row">
-                    <Square />
-                    <Square />
-                    <Square />
-                </div>
-                <div class="div-row">
-                    <Square />
-                    <Square />
-                    <Square />
-                </div>
-                <div class="div-row">
-                    <Square />
-                    <Square />
-                    <Square />
-                </div>
+                <Square />
             </div>
         )
     }

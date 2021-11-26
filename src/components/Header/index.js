@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ButtonComponent from '../ButtonComponent'
-import Connection from "../SigninComponent/index.js"
+// import Connection from "../SigninComponent/index.js"
 import "./style.css"
 
 const Header = () => {
