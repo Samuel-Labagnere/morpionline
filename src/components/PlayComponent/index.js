@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Square, { setTimeOver, hasWon } from './Square'
+import Square, { setTimeOver } from './Square'
 import ButtonComponent from '../ButtonComponent'
 import "./style.css"
 
