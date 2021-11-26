@@ -37,7 +37,7 @@ const Square = ({timeStop, party}) => {
         const value = squareValue
         const squareClicked = squareAlreadyClicked
         if(!timeOut && !victory && !lose && !aiIsPlaying){
-            if(squareAlreadyClicked[index] == false){
+            if(squareAlreadyClicked[index] === false){
                 squareClicked[index] = true
                 setSquareAlreadyClicked(squareClicked)
                 value[index] = currentPlayer
@@ -56,7 +56,7 @@ const Square = ({timeStop, party}) => {
             setTimeout(
                 () => {
                     let i = getRandomInt(9)
-                    while(squareAlreadyClicked[i] == true){
+                    while(squareAlreadyClicked[i] === true){
                         i = getRandomInt(9);
                     }
                     squareClicked[i] = true
@@ -90,7 +90,7 @@ const Square = ({timeStop, party}) => {
             setLose(true)
             timeStop()
         }else if(party !== "ai"){
-            setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
+            setCurrentPlayer(currentPlayer === "X" ? "O" : "X")
         }
     }
  
