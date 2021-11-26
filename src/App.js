@@ -4,6 +4,8 @@ import WelcomeComponent from "./components/Welcome";
 import SigninComponent from "./components/SigninComponent";
 import SignupComponent from "./components/SignupComponent";
 import PlayComponent from "./components/PlayComponent";
+import AccountComponent from "./components/AccountComponent";
+import ShopComponent from "./components/ShopComponent";
 import './App.css';
 
 function App() {
@@ -14,9 +16,9 @@ function App() {
         <Route exact path="/">
           <WelcomeComponent />
         </Route>
-        {/* <Route exact path="/account">
+        <Route exact path="/account">
           <AccountComponent />
-        </Route> */}
+        </Route>
         <Route exact path="/signin">
           <SigninComponent />
         </Route>
@@ -26,9 +28,9 @@ function App() {
         <Route exact path="/play">
           <PlayComponent />
         </Route>
-        {/* <Route exact path="/shop">
+        <Route exact path="/shop">
           <ShopComponent />
-        </Route> */}
+        </Route>
         <Route path="/">
           {/* <Error404 /> */}
           ERROR 404

@@ -17,8 +17,10 @@ const Header = () => {
                     </div> 
                 ) : (
                     <div id="header-links">
+                        <ButtonComponent type="link" id="shop" linksTo="/shop" value="Shop" />
                         <ButtonComponent type="link" id="signin" linksTo="/signin" value="Sign in" />
                         <ButtonComponent type="link" linksTo="/signup" value="Sign up" />
+                        
                     </div> 
                 )}
         </div>
