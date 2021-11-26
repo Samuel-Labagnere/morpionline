@@ -1,4 +1,5 @@
 import React from "react"
+import ButtonComponent from '../ButtonComponent'
 import "./style.css";
 
 const SigninComponent = () => {
@@ -12,7 +13,7 @@ const SigninComponent = () => {
                 <label for="pass">Pass: <span style={{color: 'red'}}>*</span></label><br />
                 <input type="password" name="pass" /><br />
 
-                <input type="submit" value="Sign in" /*onClick={Connection}*/ />
+                <ButtonComponent type="submit" value="Sign in" />
             </form>
         </div>
     )

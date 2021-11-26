@@ -1,7 +1,8 @@
 import React from 'react'
-import "./style.css"
 import { Link } from 'react-router-dom'
+import ButtonComponent from '../ButtonComponent'
 import Connection from "../SigninComponent/index.js"
+import "./style.css"
 
 const Header = () => {
     const isUserConnected = false
@@ -12,12 +13,12 @@ const Header = () => {
             {isUserConnected ? 
                 (
                     <div id="header-links">
-                        <Link to="/account">My account</Link>
+                        <ButtonComponent type="link" to="/account" value="My account" />
                     </div> 
                 ) : (
                     <div id="header-links">
-                        <Link id="signin" to="/signin">Sign in</Link>
-                        <Link to="/signup">Sign up</Link>
+                        <ButtonComponent type="link" id="signin" linksTo="/signin" value="Sign in" />
+                        <ButtonComponent type="link" linksTo="/signup" value="Sign up" />
                     </div> 
                 )}
         </div>

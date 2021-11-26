@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import Square from './square'
+import ButtonComponent from '../ButtonComponent'
 import "./style.css"
 
 const PlayComponent = () => {
@@ -33,7 +35,7 @@ const PlayComponent = () => {
     if(!isPlaying){
         return(
             <div id="playComponent">
-                <button onClick={Start}>Play</button>
+                <ButtonComponent type="button" onClick={Start} value="Play" />
             </div>
         )
     }else{
@@ -45,6 +47,21 @@ const PlayComponent = () => {
                         timerDone ? ' Time\'s over!' : ' ' + timer
                     }
                 </p>
+                <div class="div-row">
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
+                <div class="div-row">
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
+                <div class="div-row">
+                    <Square />
+                    <Square />
+                    <Square />
+                </div>
             </div>
         )
     }
