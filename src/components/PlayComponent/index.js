@@ -7,7 +7,7 @@ const PlayComponent = () => {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
 
-    const [timer, setTimer] = React.useState(5);
+    const [timer, setTimer] = React.useState(1000);
     const [timerOn, setTimerOn] = React.useState(false);
     const [timerDone, setTimerDone] = React.useState(false);
     
@@ -27,6 +27,10 @@ const PlayComponent = () => {
             1000 // 1 seconde de délai
         );
     }, [timer, timerOn])
+
+    const timeStop = () => {
+        setTimerOn(false)
+    }
 
     const Start = () => {
         setIsPlaying(true)
@@ -48,7 +52,7 @@ const PlayComponent = () => {
                         timerDone ? ' Time\'s over!' : ' ' + timer
                     }
                 </p>
-                <Square />
+                <Square timeStop={timeStop} />
             </div>
         )
     }

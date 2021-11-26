@@ -3,9 +3,9 @@ import "./square.css"
 
 const SquareProp = (props) => {
     return (
-        <button className="square" onClick={props.onClick}>
-        {props.value}
-        </button>
+        <div className="square" onClick={props.onClick}>
+        <p>{props.value}</p>
+        </div>
     );
 }
 
@@ -14,12 +14,14 @@ const setTimeOver = (value) => {
     timeOver = value
 }
 
-const Square = () => {
+const Square = ({timeStop}) => {
     const [squareValue, setSquareValue] = React.useState([null, null, null, null, null, null, null, null, null])
     let [currentPlayer, setCurrentPlayer] = React.useState("X")
+    const [squareAlreadyClicked, setSquareAlreadyClicked] = React.useState([false, false, false, false, false, false, false, false, false])
     let msg
     const [timeOut, setTimeOut] = React.useState(false)
     const [victory, setVictory] = React.useState(false)
+    const [lose, setLose] = React.useState(false)
     // let timeOver = false
 
     if(timeOver && !timeOut){
@@ -28,20 +30,33 @@ const Square = () => {
 
     const squareClick = (index) => {
         const value = squareValue
-        if(!timeOut && !victory){
-            value[index] = currentPlayer
-            setSquareValue(value)
-            setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
-        }
-        // console.log(typeof null)
-        // console.log(typeof value[0] + ' ' + typeof value[1] + ' ' + typeof value[2])
-        // console.log(value[0] + ' ' + value[1] + ' ' + value[2])
-        console.log(typeof value[0])
-        console.log('null ' + (value[0] ==! null))
-        console.log('0-1 ' + (value[0] === value[1]))
-        console.log('0-2 ' + (value[0] === value[2]))
-        if(value[0] ==! null && value[0] === value[1] && value[0] === value[2]){
-            console.log("hey")
+        const squareClicked = squareAlreadyClicked
+        if(!timeOut && !victory && !lose){
+            if(squareAlreadyClicked[index] == false){
+                squareClicked[index] = true
+                setSquareAlreadyClicked(squareClicked)
+                value[index] = currentPlayer
+                setSquareValue(value)
+                const victory1 = value[0] !== null && value[0] === value[1] && value[0] === value[2]
+                const victory2 = value[0] !== null && value[0] === value[4] && value[0] === value[8]
+                const victory3 = value[0] !== null && value[0] === value[3] && value[0] === value[6]
+                const victory4 = value[1] !== null && value[1] === value[4] && value[1] === value[7]
+                const victory5 = value[3] !== null && value[3] === value[4] && value[3] === value[5]
+                const victory6 = value[6] !== null && value[6] === value[7] && value[6] === value[8]
+                const victory7 = value[6] !== null && value[6] === value[4] && value[6] === value[2]
+                const victory8 = value[2] !== null && value[2] === value[5] && value[2] === value[8]
+                const victoryComplete = victory1 || victory2 || victory3 || victory4 || victory5 || victory6 || victory7 || victory8
+                const lost = (value[0] && value[1] && value[2] && value[3] && value[4] && value[5] && value[6] && value[7] && value[8]) !== null
+                if(victoryComplete){
+                    setVictory(true)
+                    timeStop()
+                }else if(!victoryComplete && lost){
+                    setLose(true)
+                    timeStop()
+                }else{
+                    setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
+                }
+            }
         }
     }
 
@@ -49,6 +64,8 @@ const Square = () => {
         msg = <p>{currentPlayer} won!</p>
     }else if(timeOut){
         msg = <p>Nobody won!</p>
+    }else if(lose){
+        msg = <p>Everyone lose!</p>
     }else{
         msg = <p>Current player: {currentPlayer}</p>
     }

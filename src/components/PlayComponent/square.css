@@ -1,4 +1,5 @@
 .square{
+    display: inline-block;
     height: 10vh;
     width: 5vw;
     background-color: white;
@@ -6,6 +7,9 @@
     border: 1px solid black;
     margin: 0;
     padding: 0;
+    vertical-align: bottom;
+    justify-content: center;
+    align-items: center;
 }
 .square:hover{
     cursor: pointer;
