@@ -1,0 +1,31 @@
+#shop {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-box {
+  display: flex;
+  background-color: rgb(63, 75, 87);
+  width: 400px;
+  height: 400px;
+  padding: 2ch;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+#article-img {
+  background-color: bisque;
+  width: 60px;
+  height: 60px;
+  padding: 6ch;
+}
+
