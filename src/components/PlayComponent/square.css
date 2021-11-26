@@ -1,5 +1,5 @@
 .square{
-    display: inline-block;
+    display: inline-table;
     height: 10vh;
     width: 5vw;
     background-color: white;
@@ -20,4 +20,10 @@
     margin: 0;
     padding: 0;
     line-height: 0.8;
+}
+
+.div-row p{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
