@@ -169,7 +169,7 @@ const Square = ({timeStop, party}) => {
                 <SquareProp id="square7" value={squareValue[7]} onClick={() => squareClick(7)} />
                 <SquareProp id="square8" value={squareValue[8]} onClick={() => squareClick(8)} />
             </div>
-            {victory ? <ButtonComponent type="button" value="Replay" onClick={() => window.location.reload()} /> : ''}
+            {victory || lose || timeOut ? <ButtonComponent type="button" value="Replay" onClick={() => window.location.reload()} /> : ''}
         </div>
     )
 }
