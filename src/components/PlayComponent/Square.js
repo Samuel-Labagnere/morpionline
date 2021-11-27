@@ -54,21 +54,21 @@ const Square = ({timeStop, party}) => {
     const aiPlay = () => {
         const value = squareValue
         const squareClicked = squareAlreadyClicked
-        setAiIsPlaying(true)
         setTimeout(
             () => {
                 if(party === "ai" && !victory && !lose && !timeOut && aiCanPlay){
-                let i = getRandomInt(9)
-                while(squareAlreadyClicked[i] === true){
-                    i = getRandomInt(9);
-                }
-                squareClicked[i] = true
-                setSquareAlreadyClicked(squareClicked)
-                value[i] = "O"
-                setSquareValue(value)
-                setAiIsPlaying(false)
-                check()
-                aiCanPlay = false
+                    setAiIsPlaying(true)
+                    let i = getRandomInt(9)
+                    while(squareAlreadyClicked[i] === true){
+                        i = getRandomInt(9);
+                    }
+                    squareClicked[i] = true
+                    setSquareAlreadyClicked(squareClicked)
+                    value[i] = "O"
+                    setSquareValue(value)
+                    setAiIsPlaying(false)
+                    check()
+                    aiCanPlay = false
                 }
             },
             1000 // 1 seconde de délai
@@ -96,30 +96,37 @@ const Square = ({timeStop, party}) => {
                 document.querySelector("#square1").setAttribute('style', 'color: red;')
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
             }else if(victory2){
+                setWinner(value[0] === "X" ? "X" : "O")
                 document.querySelector("#square0").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
             }else if(victory3){
+                setWinner(value[0] === "X" ? "X" : "O")
                 document.querySelector("#square0").setAttribute('style', 'color: red;')
                 document.querySelector("#square3").setAttribute('style', 'color: red;')
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
             }else if (victory4){
+                setWinner(value[1] === "X" ? "X" : "O")
                 document.querySelector("#square1").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square7").setAttribute('style', 'color: red;')
             }else if(victory5){
+                setWinner(value[3] === "X" ? "X" : "O")
                 document.querySelector("#square3").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square5").setAttribute('style', 'color: red;')
             }else if(victory6){
+                setWinner(value[6] === "X" ? "X" : "O")
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
                 document.querySelector("#square7").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
             }else if(victory7){
+                setWinner(value[6] === "X" ? "X" : "O")
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
             }else if(victory8){
+                setWinner(value[2] === "X" ? "X" : "O")
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
                 document.querySelector("#square5").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
