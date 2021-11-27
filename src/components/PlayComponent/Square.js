@@ -41,7 +41,7 @@ const Square = ({timeStop, party}) => {
         const value = squareValue
         const squareClicked = squareAlreadyClicked
         if(!timeOut && !victory && !lose && !aiIsPlaying){
-            if(squareAlreadyClicked[index] == false){
+            if(squareAlreadyClicked[index] === false){
                 squareClicked[index] = true
                 setSquareAlreadyClicked(squareClicked)
                 value[index] = currentPlayer
