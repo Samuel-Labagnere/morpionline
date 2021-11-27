@@ -1,7 +1,7 @@
 .square{
     display: inline-table;
-    height: 10vh;
-    width: 5vw;
+    min-height: 50px;
+    min-width: 50px;
     background-color: white;
     border-style: none;
     border: 1px solid black;
@@ -26,4 +26,8 @@
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+}
+
+.last-div{
+    margin-bottom: 10px;
 }

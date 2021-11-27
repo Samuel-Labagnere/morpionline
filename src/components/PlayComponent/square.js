@@ -1,9 +1,11 @@
-import React from 'react'
+import { cleanup } from '@testing-library/react';
+import React, { useEffect } from 'react'
+import ButtonComponent from '../ButtonComponent'
 import "./square.css"
 
 const SquareProp = (props) => {
     return (
-        <div className="square" onClick={props.onClick}>
+        <div id={props.id} className="square" onClick={props.onClick}>
         <p>{props.value}</p>
         </div>
     );
@@ -21,12 +23,14 @@ const getRandomInt = (max) => {
 const Square = ({timeStop, party}) => {
     const [squareValue, setSquareValue] = React.useState([null, null, null, null, null, null, null, null, null])
     let [currentPlayer, setCurrentPlayer] = React.useState("X")
+    const [winner, setWinner] = React.useState("")
     const [squareAlreadyClicked, setSquareAlreadyClicked] = React.useState([false, false, false, false, false, false, false, false, false])
     let msg
     const [timeOut, setTimeOut] = React.useState(false)
     const [victory, setVictory] = React.useState(false)
     const [lose, setLose] = React.useState(false)
     const [aiIsPlaying, setAiIsPlaying] = React.useState(false)
+    let aiCanPlay = false
     // let timeOver = false
 
     if(timeOver && !timeOut){
@@ -51,24 +55,25 @@ const Square = ({timeStop, party}) => {
     const aiPlay = () => {
         const value = squareValue
         const squareClicked = squareAlreadyClicked
-        if(party === "ai" && !victory && !lose && !timeOut){
-            setAiIsPlaying(true)
-            setTimeout(
-                () => {
-                    let i = getRandomInt(9)
-                    while(squareAlreadyClicked[i] == true){
-                        i = getRandomInt(9);
-                    }
-                    squareClicked[i] = true
-                    setSquareAlreadyClicked(squareClicked)
-                    value[i] = "O"
-                    setSquareValue(value)
-                    setAiIsPlaying(false)
-                },
-                1000 // 1 seconde de délai
-            );
-            check()
-        }
+        setAiIsPlaying(true)
+        setTimeout(
+            () => {
+                if(party === "ai" && !victory && !lose && !timeOut && aiCanPlay){
+                let i = getRandomInt(9)
+                while(squareAlreadyClicked[i] == true){
+                    i = getRandomInt(9);
+                }
+                squareClicked[i] = true
+                setSquareAlreadyClicked(squareClicked)
+                value[i] = "O"
+                setSquareValue(value)
+                setAiIsPlaying(false)
+                check()
+                aiCanPlay = false
+                }
+            },
+            1000 // 1 seconde de délai
+        );
     }
 
     const check = () => {
@@ -86,16 +91,52 @@ const Square = ({timeStop, party}) => {
         if(victoryComplete){
             setVictory(true)
             timeStop()
+            if(victory1){
+                setWinner(value[0] === "X" ? "X" : "O")
+                document.querySelector("#square0").setAttribute('style', 'color: red;')
+                document.querySelector("#square1").setAttribute('style', 'color: red;')
+                document.querySelector("#square2").setAttribute('style', 'color: red;')
+            }else if(victory2){
+                document.querySelector("#square0").setAttribute('style', 'color: red;')
+                document.querySelector("#square4").setAttribute('style', 'color: red;')
+                document.querySelector("#square8").setAttribute('style', 'color: red;')
+            }else if(victory3){
+                document.querySelector("#square0").setAttribute('style', 'color: red;')
+                document.querySelector("#square3").setAttribute('style', 'color: red;')
+                document.querySelector("#square6").setAttribute('style', 'color: red;')
+            }else if (victory4){
+                document.querySelector("#square1").setAttribute('style', 'color: red;')
+                document.querySelector("#square4").setAttribute('style', 'color: red;')
+                document.querySelector("#square7").setAttribute('style', 'color: red;')
+            }else if(victory5){
+                document.querySelector("#square3").setAttribute('style', 'color: red;')
+                document.querySelector("#square4").setAttribute('style', 'color: red;')
+                document.querySelector("#square5").setAttribute('style', 'color: red;')
+            }else if(victory6){
+                document.querySelector("#square6").setAttribute('style', 'color: red;')
+                document.querySelector("#square7").setAttribute('style', 'color: red;')
+                document.querySelector("#square8").setAttribute('style', 'color: red;')
+            }else if(victory7){
+                document.querySelector("#square6").setAttribute('style', 'color: red;')
+                document.querySelector("#square4").setAttribute('style', 'color: red;')
+                document.querySelector("#square2").setAttribute('style', 'color: red;')
+            }else if(victory8){
+                document.querySelector("#square2").setAttribute('style', 'color: red;')
+                document.querySelector("#square5").setAttribute('style', 'color: red;')
+                document.querySelector("#square8").setAttribute('style', 'color: red;')
+            }
         }else if(!victoryComplete && lost){
             setLose(true)
             timeStop()
         }else if(party !== "ai"){
             setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
+        }else{
+            aiCanPlay = true
         }
     }
  
     if(victory){
-        msg = <p>{currentPlayer} won!</p>
+        msg = <p>{winner} won!</p>
     }else if(timeOut){
         msg = <p>Nobody won!</p>
     }else if(lose){
@@ -108,20 +149,21 @@ const Square = ({timeStop, party}) => {
         <div>
             {msg}
             <div className="div-row">
-                <SquareProp value={squareValue[0]} onClick={() => squareClick(0)} />
-                <SquareProp value={squareValue[1]} onClick={() => squareClick(1)} />
-                <SquareProp value={squareValue[2]} onClick={() => squareClick(2)} />
+                <SquareProp id="square0" value={squareValue[0]} onClick={() => squareClick(0)} />
+                <SquareProp id="square1" value={squareValue[1]} onClick={() => squareClick(1)} />
+                <SquareProp id="square2" value={squareValue[2]} onClick={() => squareClick(2)} />
             </div>
             <div className="div-row">
-                <SquareProp value={squareValue[3]} onClick={() => squareClick(3)} />
-                <SquareProp value={squareValue[4]} onClick={() => squareClick(4)} />
-                <SquareProp value={squareValue[5]} onClick={() => squareClick(5)} />
+                <SquareProp id="square3" value={squareValue[3]} onClick={() => squareClick(3)} />
+                <SquareProp id="square4" value={squareValue[4]} onClick={() => squareClick(4)} />
+                <SquareProp id="square5" value={squareValue[5]} onClick={() => squareClick(5)} />
             </div>
-            <div className="div-row">
-                <SquareProp value={squareValue[6]} onClick={() => squareClick(6)} />
-                <SquareProp value={squareValue[7]} onClick={() => squareClick(7)} />
-                <SquareProp value={squareValue[8]} onClick={() => squareClick(8)} />
+            <div className="div-row last-div">
+                <SquareProp id="square6" value={squareValue[6]} onClick={() => squareClick(6)} />
+                <SquareProp id="square7" value={squareValue[7]} onClick={() => squareClick(7)} />
+                <SquareProp id="square8" value={squareValue[8]} onClick={() => squareClick(8)} />
             </div>
+            {victory ? <ButtonComponent type="button" value="Replay" onClick={() => window.location.reload()} /> : ''}
         </div>
     )
 }
