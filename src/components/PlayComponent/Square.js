@@ -1,5 +1,4 @@
-import { cleanup } from '@testing-library/react';
-import React, { useEffect } from 'react'
+import React from 'react'
 import ButtonComponent from '../ButtonComponent'
 import "./square.css"
 
@@ -60,7 +59,7 @@ const Square = ({timeStop, party}) => {
             () => {
                 if(party === "ai" && !victory && !lose && !timeOut && aiCanPlay){
                 let i = getRandomInt(9)
-                while(squareAlreadyClicked[i] == true){
+                while(squareAlreadyClicked[i] === true){
                     i = getRandomInt(9);
                 }
                 squareClicked[i] = true
@@ -129,7 +128,7 @@ const Square = ({timeStop, party}) => {
             setLose(true)
             timeStop()
         }else if(party !== "ai"){
-            setCurrentPlayer(currentPlayer == "X" ? "O" : "X")
+            setCurrentPlayer(currentPlayer === "X" ? "O" : "X")
         }else{
             aiCanPlay = true
         }
