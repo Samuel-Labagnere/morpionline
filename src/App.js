@@ -6,6 +6,7 @@ import SignupComponent from "./components/SignupComponent";
 import PlayComponent from "./components/PlayComponent";
 import AccountComponent from "./components/AccountComponent";
 import ShopComponent from "./components/ShopComponent";
+import Error404 from "./components/Error404";
 import './App.css';
 
 function App() {
@@ -32,8 +33,7 @@ function App() {
           <ShopComponent />
         </Route>
         <Route path="/">
-          {/* <Error404 /> */}
-          ERROR 404
+          <Error404 />
         </Route>
       </Switch>
     </BrowserRouter>
