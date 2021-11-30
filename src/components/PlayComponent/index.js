@@ -11,7 +11,7 @@ const PlayComponent = () => {
     const [isPlayingOffline, setIsPlayingOffline] = React.useState(false)
     const [isPlayingOnline, setIsPlayingOnline] = React.useState(false)
 
-    const [timer, setTimer] = React.useState(1000);
+    const [timer, setTimer] = React.useState(60);
     const [timerOn, setTimerOn] = React.useState(false);
     const [timerDone, setTimerDone] = React.useState(false);
     
