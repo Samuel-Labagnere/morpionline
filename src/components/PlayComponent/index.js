@@ -8,6 +8,8 @@ const PlayComponent = () => {
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isPlayingFriend, setIsPlayingFriend] = React.useState(false);
     const [isPlayingAI, setIsPlayingAI] = React.useState(false);
+    const [isPlayingOffline, setIsPlayingOffline] = React.useState(false)
+    const [isPlayingOnline, setIsPlayingOnline] = React.useState(false)
 
     const [timer, setTimer] = React.useState(1000);
     const [timerOn, setTimerOn] = React.useState(false);
@@ -41,6 +43,10 @@ const PlayComponent = () => {
             setIsPlayingFriend(true)
         }else if(party === 'ai'){
             setIsPlayingAI(true)
+        }else if(party === 'offline'){
+            setIsPlayingOffline(true)
+        }else if(party === 'online'){
+            setIsPlayingOnline(true)
         }
     }
 
@@ -53,17 +59,33 @@ const PlayComponent = () => {
         )
     }else{
         if(isPlayingFriend){
-            return(
-                <div id="playComponent">
-                    <p>
-                        <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
-                        {
-                            timerDone ? ' Time\'s over!' : ' ' + timer
-                        }
-                    </p>
-                    <Square timeStop={timeStop} party="friend" />
-                </div>
-            )
+            if(!isPlayingOffline && !isPlayingOnline){
+                return(
+                    <div id="playComponent">
+                        <ButtonComponent type="button" onClick={() => Start('offline')} value="Offline" style={{marginBottom: '15px'}} /><br />
+                        <ButtonComponent type="button" onClick={() => Start('online')} value="Online" />                 
+                    </div>
+                )
+            }else if(isPlayingOffline){
+                return(
+                    <div id="playComponent">
+                        <p>
+                            <span style={{textDecoration: 'underline', fontWeight: 'bold'}}>TIMER:</span>
+                            {
+                                timerDone ? ' Time\'s over!' : ' ' + timer
+                            }
+                        </p>
+                        <Square timeStop={timeStop} party="offline" />
+                    </div>
+                )
+            }else if(isPlayingOnline){
+                return(
+                    <div id="playComponent">
+                        <p style={{fontWeight: "bold", textDecoration: "underline"}}>Work in progress.</p>
+                        <ButtonComponent type="button" onClick={() => setIsPlayingOnline(false)} value="Return" />
+                    </div>
+                )
+            }
         }else if(isPlayingAI){
             return(
                 <div id="playComponent">
