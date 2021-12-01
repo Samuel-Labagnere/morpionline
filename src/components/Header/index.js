@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react/cjs/react.development'
 import ButtonComponent from '../ButtonComponent'
-// import Connection from "../SigninComponent/index.js"
 import "./style.css"
 
-const Header = () => {
-    const isUserConnected = false
 
+const Header = () => {
+    const [isUserConnected, setIsUserConnected] = React.useState(false)
+    
     return(
         <div id="header">
             <Link id="header-title" to="/"><h1>MORPIONLINE</h1></Link>
