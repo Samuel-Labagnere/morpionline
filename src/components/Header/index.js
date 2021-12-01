@@ -12,7 +12,7 @@ const Header = ({ userConnect }) => {
             {userConnect ? 
                 (
                     <div id="header-links">
-                        <ButtonComponent type="link" linksTo="/account" value="My account" />
+                        <ButtonComponent type="link" id="account" linksTo="/account" value="My account" />
                         <ButtonComponent type="link" id="shop" linksTo="/shop" value="Shop" />
                     </div> 
                 ) : (

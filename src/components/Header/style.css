@@ -6,6 +6,10 @@
     margin-bottom: 50px;
 }
 
+#header-links{
+    display: flex;
+}
+
 #header-title{
     text-decoration: none;
     color: black;
@@ -19,7 +23,7 @@
     text-shadow: #1e85ca 0px 0px 1.5px ;
 }
 
-#shop {
+#account {
     margin-right: 2ch;
 }
 
