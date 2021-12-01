@@ -15,7 +15,8 @@ const SignupComponent = () => {
         localStorage.setItem("pass", JSON.stringify(pass))
     })
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault()
         if(mail !== "" && pseudo !== "" && pass !== ""){
             setMsg(<p style={{color: "green", fontWeight: "bold"}}>Account created.</p>)
         }
@@ -23,7 +24,7 @@ const SignupComponent = () => {
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form>
                 {msg}
                 <label for="mail">Mail: <span style={{color: 'red'}}>*</span></label><br />
                 <input type="email" name="mail" onChange={(e) => setMail(e.target.value)} required/><br />
@@ -34,7 +35,7 @@ const SignupComponent = () => {
                 <label for="pass">Pass: <span style={{color: 'red'}}>*</span></label><br />
                 <input type="password" name="pass" onChange={(e) => setPass(e.target.value)} required/><br />
 
-                <ButtonComponent type="submit" value="Sign up" />
+                <ButtonComponent type="submit" onClick={handleSubmit} value="Sign up" />
             </form>
         </div>
     )
