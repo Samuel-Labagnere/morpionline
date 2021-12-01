@@ -29,6 +29,8 @@ const Shop = () => {
         //pieces -= 100
         //Stocker achat
       break;
+      default:
+      break;
     }
   }
   return (

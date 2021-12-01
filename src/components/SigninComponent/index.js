@@ -1,6 +1,5 @@
 import React from "react"
 import ButtonComponent from '../ButtonComponent'
-import Header from "../Header";
 import "./style.css";
 
 const SigninComponent = ({ setUserConnect }) => {
