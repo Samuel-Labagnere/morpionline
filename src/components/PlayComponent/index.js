@@ -81,7 +81,7 @@ const PlayComponent = () => {
             }else if(isPlayingOnline){
                 return(
                     <div id="playComponent">
-                        <p style={{fontWeight: "bold", textDecoration: "underline"}}>Work in progress.</p>
+                        <p style={{fontWeight: "bold"}}>Work in progress.</p>
                         <ButtonComponent type="button" onClick={() => setIsPlayingOnline(false)} value="Return" />
                     </div>
                 )
