@@ -5,23 +5,21 @@ import ButtonComponent from '../ButtonComponent'
 import "./style.css"
 
 
-const Header = () => {
-    const [isUserConnected, setIsUserConnected] = React.useState(false)
+const Header = ({ userConnect }) => {
     
     return(
         <div id="header">
             <Link id="header-title" to="/"><h1>MORPIONLINE</h1></Link>
-            {isUserConnected ? 
+            {userConnect ? 
                 (
                     <div id="header-links">
-                        <ButtonComponent type="link" to="/account" value="My account" />
+                        <ButtonComponent type="link" linksTo="/account" value="My account" />
                         <ButtonComponent type="link" id="shop" linksTo="/shop" value="Shop" />
                     </div> 
                 ) : (
                     <div id="header-links">
                         <ButtonComponent type="link" id="signin" linksTo="/signin" value="Sign in" />
                         <ButtonComponent type="link" linksTo="/signup" value="Sign up" />
-                        
                     </div> 
                 )}
         </div>
