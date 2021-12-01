@@ -3,7 +3,7 @@ import ButtonComponent from '../ButtonComponent'
 import Header from "../Header";
 import "./style.css";
 
-const SigninComponent = () => {
+const SigninComponent = ({ setUserConnect }) => {
     const [pseudo, setPseudo] = React.useState("")
     const [pass, setPass] = React.useState("")
     const [msg, setMsg] = React.useState("")
@@ -13,6 +13,7 @@ const SigninComponent = () => {
         if(pseudo !== "" && pass !== ""){
             if(JSON.stringify(pseudo) === localStorage.getItem("pseudo") && JSON.stringify(pass) === localStorage.getItem("pass")){
                 // Connect User in Header component
+                setUserConnect(true)
                 setMsg(<p style={{color: "green", fontWeight: "bold"}}>Connection success!</p>)
             }else{
                 setMsg(<p style={{color: "red", fontWeight: "bold"}}>Pseudo or Pass incorrect.</p>)
