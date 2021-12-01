@@ -33,7 +33,7 @@ function App() {
           <SignupComponent />
         </Route>
         <Route exact path="/play">
-          <PlayComponent />
+          <PlayComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/shop">
           <ShopComponent />

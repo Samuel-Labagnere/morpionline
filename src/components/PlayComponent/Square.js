@@ -19,7 +19,7 @@ const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
 }
 
-const Square = ({timeStop, party}) => {
+const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFriend, setIsPlayingOffline, setIsPlayingOnline}) => {
     const [squareValue, setSquareValue] = React.useState([null, null, null, null, null, null, null, null, null])
     let [currentPlayer, setCurrentPlayer] = React.useState("X")
     const [winner, setWinner] = React.useState("")
@@ -140,6 +140,15 @@ const Square = ({timeStop, party}) => {
             aiCanPlay = true
         }
     }
+
+    const setAllFalse = () => {
+        setCurrentPlayer("X")
+        setIsPlaying(false)
+        setIsPlayingAI(false)
+        setIsPlayingFriend(false)
+        setIsPlayingOffline(false)
+        setIsPlayingOnline(false)
+    }
  
     if(victory){
         msg = <p>{winner} won!</p>
@@ -169,7 +178,7 @@ const Square = ({timeStop, party}) => {
                 <SquareProp id="square7" value={squareValue[7]} onClick={() => squareClick(7)} />
                 <SquareProp id="square8" value={squareValue[8]} onClick={() => squareClick(8)} />
             </div>
-            {victory || lose || timeOut ? <ButtonComponent type="button" value="Replay" onClick={() => window.location.reload()} /> : ''}
+            {victory || lose || timeOut ? <ButtonComponent type="button" value="Replay" onClick={setAllFalse} /> : ''}
         </div>
     )
 }
