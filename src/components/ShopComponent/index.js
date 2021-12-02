@@ -9,7 +9,7 @@ const Shop = ({ userConnect }) => {
         let inventory = JSON.parse(localStorage.getItem("items"))
         let newValue = JSON.parse(localStorage.getItem("coins")) - value
   
-        if(!inventory.includes(product) && !articleBought && JSON.parse(localStorage.getItem("coins")) >= value){
+        if(!inventory.includes(product) && JSON.parse(localStorage.getItem("coins")) >= value){
           localStorage.setItem("coins" , newValue)
           inventory.push(product)
           localStorage.setItem("items", JSON.stringify(inventory))
