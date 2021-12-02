@@ -12,12 +12,14 @@ const SignupComponent = ({ userConnect }) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if(mail !== "" && pseudo !== "" && pass !== ""){
+            const inventory = []
             localStorage.setItem("mail", JSON.stringify(mail))
             localStorage.setItem("pseudo", JSON.stringify(pseudo))
             localStorage.setItem("pass", JSON.stringify(pass))
             localStorage.setItem("victories", JSON.stringify(0))
             localStorage.setItem("losses", JSON.stringify(0))
             localStorage.setItem("coins", JSON.stringify(0))
+            localStorage.setItem("items", JSON.stringify(inventory))
             setMsg(<p style={{color: "green", fontWeight: "bold"}}>Account created.</p>)
         }
     }
