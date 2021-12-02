@@ -24,22 +24,22 @@ function App() {
           <WelcomeComponent />
         </Route>
         <Route exact path="/account">
-          <AccountComponent />
+          <AccountComponent userConnect={userConnect} setUserConnect={setUserConnect} />
         </Route>
         <Route exact path="/signin">
           <SigninComponent setUserConnect={setUserConnect} />
         </Route>
         <Route exact path="/signup">
-          <SignupComponent />
+          <SignupComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/play">
           <PlayComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/shop">
-          <ShopComponent />
+          <ShopComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/redeem">
-          <RedeemComponent />
+          <RedeemComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/routes">
           <Routes />

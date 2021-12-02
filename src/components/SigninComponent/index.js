@@ -21,7 +21,7 @@ const SigninComponent = ({ setUserConnect }) => {
     }
 
     return(
-        <div>
+        <div id="signinComponent">
             <form>
                 {msg}
                 <label htmlFor="pseudo">Pseudo: <span style={{color: 'red'}}>*</span></label><br />
@@ -30,7 +30,7 @@ const SigninComponent = ({ setUserConnect }) => {
                 <label htmlFor="pass">Pass: <span style={{color: 'red'}}>*</span></label><br />
                 <input type="password" name="pass" onChange={(e) => setPass(e.target.value)} required/><br />
 
-                <ButtonComponent type="button" onClick={handleSubmit} value="Sign in" />
+                <ButtonComponent type="button" onClick={handleSubmit} style={{marginTop: "20px"}} value="Sign in" />
             </form>
         </div>
     )
