@@ -92,41 +92,89 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
             timeStop()
             if(victory1){
                 setWinner(value[0] === "X" ? "X" : "O")
+                if(value[0] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square0").setAttribute('style', 'color: red;')
                 document.querySelector("#square1").setAttribute('style', 'color: red;')
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
             }else if(victory2){
                 setWinner(value[0] === "X" ? "X" : "O")
+                if(value[0] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square0").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
             }else if(victory3){
                 setWinner(value[0] === "X" ? "X" : "O")
+                if(value[0] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square0").setAttribute('style', 'color: red;')
                 document.querySelector("#square3").setAttribute('style', 'color: red;')
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
             }else if (victory4){
                 setWinner(value[1] === "X" ? "X" : "O")
+                if(value[1] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square1").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square7").setAttribute('style', 'color: red;')
             }else if(victory5){
                 setWinner(value[3] === "X" ? "X" : "O")
+                if(value[3] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square3").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square5").setAttribute('style', 'color: red;')
             }else if(victory6){
                 setWinner(value[6] === "X" ? "X" : "O")
+                if(value[6] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
                 document.querySelector("#square7").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
             }else if(victory7){
                 setWinner(value[6] === "X" ? "X" : "O")
+                if(value[6] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square6").setAttribute('style', 'color: red;')
                 document.querySelector("#square4").setAttribute('style', 'color: red;')
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
             }else if(victory8){
                 setWinner(value[2] === "X" ? "X" : "O")
+                if(value[2] === "X"){
+                    localStorage.setItem("victories" , JSON.parse(localStorage.getItem("victories")) + 1)
+                    localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) + 10)
+                }else{
+                    localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
+                }
                 document.querySelector("#square2").setAttribute('style', 'color: red;')
                 document.querySelector("#square5").setAttribute('style', 'color: red;')
                 document.querySelector("#square8").setAttribute('style', 'color: red;')
@@ -134,6 +182,7 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
         }else if(!victoryComplete && lost){
             setLose(true)
             timeStop()
+            localStorage.setItem("losses" , JSON.parse(localStorage.getItem("losses")) + 1)
         }else if(party !== "ai"){
             setCurrentPlayer(currentPlayer === "X" ? "O" : "X")
         }else{

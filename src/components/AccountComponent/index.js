@@ -4,29 +4,32 @@ import ButtonComponent from "../ButtonComponent";
 
 const Account = ({ userConnect, setUserConnect }) => {
   if(userConnect){
+    const regex = /./ig;
+    let pass = JSON.parse(localStorage.getItem("pass"));
+    let hashedPass = pass.replaceAll(regex, "*");
     return (
       <div id="account">
         <div id="profile-img"></div>
         <div id="player-infos">
           <div id="player-name">
-            <h2>The_SamL</h2>{" "}
+            <h2>{JSON.parse(localStorage.getItem("pseudo"))}</h2>{" "}
             {/* Ici importer un element remplaçable par le joueur depuis la boutique */}
           </div>
           <div id="player-stats">
             <p>Played time : 1500h</p>{" "}
             {/* stats du joueur peut peut etre crée un nouveau component pour ça. Idem pour parties perdues et gagnées */}
-            <p>Victories : 2662</p>
-            <p>Losses : 5</p>
-            <p>750 coins</p>
+            <p>Victories : {localStorage.getItem("victories")}</p>
+            <p>Losses : {localStorage.getItem("losses")}</p>
+            <p>Coins: {localStorage.getItem("coins")}</p>
           </div>
 
           <div id="player-setings">
             <div style={{display: "flex", flexDirection: "row", alignItems: "baseline"}}>
-              <p>Mail : SamuelYaniLesBG@mmibordeaux.com</p>
+              <p>Mail : {JSON.parse(localStorage.getItem("mail"))}</p>
               <ButtonComponent type="button" value="Change mail" style={{marginLeft: "15px"}} />
             </div>
             <div style={{display: "flex", flexDirection: "row", justifyContent: "baseline"}}>
-              <p>Password : xxxxxxxxxx</p>
+              <p>Password : {hashedPass}</p>
               <ButtonComponent type="button" value="Change password" style={{marginLeft: "15px"}} />
             </div>
           </div>

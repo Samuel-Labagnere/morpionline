@@ -3,38 +3,44 @@ import ButtonComponent from "../ButtonComponent";
 import "./style.css";
 
 const Shop = ({ userConnect }) => {
-  const buy = (product) => {
-    switch(product){
-      case 'croix_rouge' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      case 'croix_or' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      case 'croix_verte' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      case 'croix_bleue' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      case 'croix_jaune' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      case 'croix_violette' :
-        //pieces -= 100
-        //Stocker achat
-      break;
-      default:
-      break;
-    }
-  }
-
   if(userConnect){
+    const buy = (product, value) => {
+      switch(product){
+        case 'croix_rouge' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        case 'croix_or' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        case 'croix_verte' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        case 'croix_bleue' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        case 'croix_jaune' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        case 'croix_violette' :
+          //pieces -= 100
+          localStorage.setItem("coins" , JSON.parse(localStorage.getItem("coins")) - value)
+          //Stocker achat
+        break;
+        default:
+        break;
+      }
+    }
+
     return (
       <div id="shop">
         <h1>Here is the Shop !</h1>
@@ -44,42 +50,48 @@ const Shop = ({ userConnect }) => {
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_rouge')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_rouge', 100)} value="Buy" />
             </div>
           </div>
           <div class="item-box">
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_or')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_or', 100)} value="Buy" />
             </div>
           </div>
           <div class="item-box">
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_verte')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_verte', 100)} value="Buy" />
             </div>
           </div>
           <div class="item-box">
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_bleue')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_bleue', 100)} value="Buy" />
             </div>
           </div>
           <div class="item-box">
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_jaune')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_jaune', 100)} value="Buy" />
             </div>
           </div>
           <div class="item-box">
             <div id="item-box">
               <h2>NOM ARTICLE</h2>
               <div id="article-img"></div>
-              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_violette')} value="Buy" />
+              <p>100 coins</p>
+              <ButtonComponent id="buy-button" type="button" onClick={() => buy('croix_violette', 100)} value="Buy" />
             </div>
           </div>
         </div>

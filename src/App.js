@@ -16,6 +16,10 @@ import './App.css';
 
 function App() {
   const [userConnect, setUserConnect] = React.useState(false)
+  const [userVictories,setUserVictories] = React.useState(0)
+  const [userLosses, setUserLosses] = React.useState(0)
+  const [userCoins, setUserCoins] = React.useState(0)
+
   return (
     <BrowserRouter>
       <Header userConnect={userConnect} />
@@ -33,10 +37,10 @@ function App() {
           <SignupComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/play">
-          <PlayComponent userConnect={userConnect} />
+          <PlayComponent userConnect={userConnect} userCoins={userCoins} setUserCoins={setUserCoins} userVictories={userVictories} setUserVictories={setUserVictories} userLosses={userLosses} setUserLosses={setUserLosses} />
         </Route>
         <Route exact path="/shop">
-          <ShopComponent userConnect={userConnect} />
+          <ShopComponent userConnect={userConnect} userCoins={userCoins} setUserCoins={setUserCoins} />
         </Route>
         <Route exact path="/redeem">
           <RedeemComponent userConnect={userConnect} />
