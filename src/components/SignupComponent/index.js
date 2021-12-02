@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ButtonComponent from '../ButtonComponent'
 import "./style.css";
 
@@ -8,7 +8,7 @@ const SignupComponent = ({ userConnect }) => {
     const [pass, setPass] = React.useState("")
     
     const [msg, setMsg] = React.useState("")
-    
+
     const handleSubmit = (event) => {
         event.preventDefault()
         if(mail !== "" && pseudo !== "" && pass !== ""){
