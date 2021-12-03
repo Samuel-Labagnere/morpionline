@@ -3,22 +3,22 @@ import "./style.css";
 import ButtonComponent from "../ButtonComponent";
 
 const Account = ({ userConnect, setUserConnect, selectedItem, updateSelectedItem }) => {
-  let playerSelection = <p></p>
-
-  if(localStorage.getItem("items") !== ""){
-    playerSelection = JSON.parse(localStorage.getItem("items")).map((elem, index) => {
-      return(
-        <div className="item" key={index}>
-          <p>{elem}</p>
-          <ButtonComponent type="button" onClick={() => updateSelectedItem(elem)} value={localStorage.getItem("selection") === elem ? "Equipped" : "Equip"}/>
-        </div>
-      )
-    })
-  }else{
-    playerSelection = <p>No bought items.</p>
-  }
-
   if(userConnect){
+    let playerSelection = <p></p>
+
+    if(localStorage.getItem("items") !== ""){
+      playerSelection = JSON.parse(localStorage.getItem("items")).map((elem, index) => {
+        return(
+          <div className="item" key={index}>
+            <p>{elem}</p>
+            <ButtonComponent type="button" onClick={() => updateSelectedItem(elem)} value={localStorage.getItem("selection") === elem ? "Equipped" : "Equip"}/>
+          </div>
+        )
+      })
+    }else{
+      playerSelection = <p>No bought items.</p>
+    }
+
     const regex = /./ig;
     let pass = JSON.parse(localStorage.getItem("pass"));
     let hashedPass = pass.replaceAll(regex, "*");
