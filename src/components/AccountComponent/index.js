@@ -10,7 +10,7 @@ const Account = ({ userConnect, setUserConnect, selectedItem, updateSelectedItem
       return(
         <div className="item" key={index}>
           <p>{elem}</p>
-          <ButtonComponent type="button" onClick={() => updateSelectedItem(elem)} value={JSON.parse(localStorage.getItem("selection")) === elem ? "Equipped" : "Equip"}/>
+          <ButtonComponent type="button" onClick={() => updateSelectedItem(elem)} value={localStorage.getItem("selection") === elem ? "Equipped" : "Equip"}/>
         </div>
       )
     })
