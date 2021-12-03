@@ -23,7 +23,7 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
     const [squareValue, setSquareValue] = React.useState([null, null, null, null, null, null, null, null, null])
     const [squareStyle, setSquareStyle] = React.useState(["", "", "", "", "", "", "", "", ""])
     let style = ""
-    if(JSON.parse(localStorage.getItem("selection")) !== null || JSON.parse(localStorage.getItem("selection")) !== ""){
+    if(localStorage.getItem("selection")){
         switch(JSON.parse(localStorage.getItem("selection"))){
             case 'croix_rouge' : 
                 style = "red"
