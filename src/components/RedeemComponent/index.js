@@ -8,11 +8,27 @@ const RedeemComponent = ({ userConnect }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if(code === ""){
-            setMsg("You need to enter a code first.")
-        }else if(code !== "" && userConnect){
-            setMsg("Code redeemed! (At least, that's how it should work)")
-        }else if(code !== "" && !userConnect){
+        if(userConnect){
+            if(code === ""){
+                setMsg("You need to enter a code first.")
+            }else{
+                let itemList = JSON.parse(localStorage.getItem("items"))
+                switch(code){
+                    case 'goldenCrossFREE':
+                        if(itemList.includes("croix_or")){
+                            setMsg("Error! You already possess the item you are trying to redeem.")
+                        }else{
+                            setMsg("Congrats! You won a free GOLDEN CROSS cosmetic!")
+                            itemList.push("croix_or")
+                            localStorage.setItem("items", JSON.stringify(itemList))
+                        }
+                    break
+                    default:
+                        setMsg("Wrong code.")
+                    break
+                }
+            }
+        }else{
             setMsg("You are not connected, please sign in.")
         }
     }
@@ -21,7 +37,7 @@ const RedeemComponent = ({ userConnect }) => {
         <div id="redeemComponent">
             <form>
                 <h2>Redeem your gift:</h2>
-                <label for="code">Code: </label>
+                <label htmlFor="code">Code: </label>
                 <input type="text" name="code" onChange={(e) => setCode(e.target.value)} required /><br />
                 <p style={{fontWeight: "bold"}}>{msg}</p>
                 <ButtonComponent type="button" onClick={handleSubmit} value="Redeem" style={{marginTop: "15px"}} />
