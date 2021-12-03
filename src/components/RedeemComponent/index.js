@@ -15,11 +15,11 @@ const RedeemComponent = ({ userConnect }) => {
                 let itemList = JSON.parse(localStorage.getItem("items"))
                 switch(code){
                     case 'goldenCrossFREE':
-                        if(itemList.includes("croix_or")){
+                        if(itemList.includes("golden_cross")){
                             setMsg("Error! You already possess the item you are trying to redeem.")
                         }else{
                             setMsg("Congrats! You won a free GOLDEN CROSS cosmetic!")
-                            itemList.push("croix_or")
+                            itemList.push("golden_cross")
                             localStorage.setItem("items", JSON.stringify(itemList))
                         }
                     break

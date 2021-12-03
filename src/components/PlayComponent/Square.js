@@ -25,22 +25,22 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
     let style = ""
     if(localStorage.getItem("selection")){
         switch(JSON.parse(localStorage.getItem("selection"))){
-            case 'croix_rouge' : 
+            case 'red_cross' : 
                 style = "red"
             break
-            case 'croix_or' : 
+            case 'golden_cross' : 
                 style = "#ffd700"
             break
-            case 'croix_verte' : 
+            case 'green_cross' : 
                 style = "green"
             break
-            case 'croix_bleue' : 
+            case 'blue_cross' : 
                 style = "blue"
             break
-            case 'croix_jaune' : 
+            case 'yellow_cross' : 
                 style = "yellow"
             break
-            case 'croix_violette' : 
+            case 'purple_cross' : 
                 style = "purple"
             break
             default:
