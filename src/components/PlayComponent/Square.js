@@ -48,6 +48,7 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
             break
         }
     }
+
     let [currentPlayer, setCurrentPlayer] = React.useState("X")
     const [winner, setWinner] = React.useState("")
     const [squareAlreadyClicked, setSquareAlreadyClicked] = React.useState([false, false, false, false, false, false, false, false, false])

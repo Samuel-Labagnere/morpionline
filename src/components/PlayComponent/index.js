@@ -39,6 +39,7 @@ const PlayComponent = ({ userConnect }) => {
     const Start = (party) => {
         setIsPlaying(true)
         setTimerOn(true)
+        setTimer(60)
         if(party === 'friend'){
             setIsPlayingFriend(true)
         }else if(party === 'ai'){
