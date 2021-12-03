@@ -5,7 +5,7 @@ import "./square.css"
 const SquareProp = (props) => {
     return (
         <div id={props.id} className="square" onClick={props.onClick}>
-        <p>{props.value}</p>
+        <p style={{color: props.style, fontWeight: "bold"}} >{props.value}</p>
         </div>
     );
 }
@@ -21,6 +21,33 @@ const getRandomInt = (max) => {
 
 const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFriend, setIsPlayingOffline, setIsPlayingOnline}) => {
     const [squareValue, setSquareValue] = React.useState([null, null, null, null, null, null, null, null, null])
+    const [squareStyle, setSquareStyle] = React.useState(["", "", "", "", "", "", "", "", ""])
+    let style = ""
+    if(JSON.parse(localStorage.getItem("selection"))){
+        switch(JSON.parse(localStorage.getItem("selection"))){
+            case 'croix_rouge' : 
+                style = "red"
+            break
+            case 'croix_or' : 
+                style = "#ffd700"
+            break
+            case 'croix_verte' : 
+                style = "green"
+            break
+            case 'croix_bleue' : 
+                style = "blue"
+            break
+            case 'croix_jaune' : 
+                style = "yellow"
+            break
+            case 'croix_violette' : 
+                style = "purple"
+            break
+            default:
+                style = ""
+            break
+        }
+    }
     let [currentPlayer, setCurrentPlayer] = React.useState("X")
     const [winner, setWinner] = React.useState("")
     const [squareAlreadyClicked, setSquareAlreadyClicked] = React.useState([false, false, false, false, false, false, false, false, false])
@@ -38,6 +65,7 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
 
     const squareClick = (index) => {
         const value = squareValue
+        const color = squareStyle
         const squareClicked = squareAlreadyClicked
         if(!timeOut && !victory && !lose && !aiIsPlaying){
             if(squareAlreadyClicked[index] === false){
@@ -45,6 +73,10 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
                 setSquareAlreadyClicked(squareClicked)
                 value[index] = currentPlayer
                 setSquareValue(value)
+                if(currentPlayer === "X"){
+                    color[index] = style
+                    setSquareStyle(color)
+                }
                 check()
             }
             aiPlay()
@@ -213,19 +245,19 @@ const Square = ({timeStop, party, setIsPlaying, setIsPlayingAI, setIsPlayingFrie
         <div>
             {msg}
             <div className="div-row">
-                <SquareProp id="square0" value={squareValue[0]} onClick={() => squareClick(0)} />
-                <SquareProp id="square1" value={squareValue[1]} onClick={() => squareClick(1)} />
-                <SquareProp id="square2" value={squareValue[2]} onClick={() => squareClick(2)} />
+                <SquareProp id="square0" value={squareValue[0]} style={squareStyle[0]} onClick={() => squareClick(0)} />
+                <SquareProp id="square1" value={squareValue[1]} style={squareStyle[1]} onClick={() => squareClick(1)} />
+                <SquareProp id="square2" value={squareValue[2]} style={squareStyle[2]} onClick={() => squareClick(2)} />
             </div>
             <div className="div-row">
-                <SquareProp id="square3" value={squareValue[3]} onClick={() => squareClick(3)} />
-                <SquareProp id="square4" value={squareValue[4]} onClick={() => squareClick(4)} />
-                <SquareProp id="square5" value={squareValue[5]} onClick={() => squareClick(5)} />
+                <SquareProp id="square3" value={squareValue[3]} style={squareStyle[3]} onClick={() => squareClick(3)} />
+                <SquareProp id="square4" value={squareValue[4]} style={squareStyle[4]} onClick={() => squareClick(4)} />
+                <SquareProp id="square5" value={squareValue[5]} style={squareStyle[5]} onClick={() => squareClick(5)} />
             </div>
             <div className="div-row last-div">
-                <SquareProp id="square6" value={squareValue[6]} onClick={() => squareClick(6)} />
-                <SquareProp id="square7" value={squareValue[7]} onClick={() => squareClick(7)} />
-                <SquareProp id="square8" value={squareValue[8]} onClick={() => squareClick(8)} />
+                <SquareProp id="square6" value={squareValue[6]} style={squareStyle[6]} onClick={() => squareClick(6)} />
+                <SquareProp id="square7" value={squareValue[7]} style={squareStyle[7]} onClick={() => squareClick(7)} />
+                <SquareProp id="square8" value={squareValue[8]} style={squareStyle[8]} onClick={() => squareClick(8)} />
             </div>
             {victory || lose || timeOut ? <ButtonComponent type="button" value="Replay" onClick={setAllFalse} /> : ''}
         </div>
