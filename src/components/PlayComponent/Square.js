@@ -5,7 +5,7 @@ import "./square.css"
 const SquareProp = (props) => {
     return (
         <div id={props.id} className="square" onClick={props.onClick}>
-        <p style={{color: props.style, fontWeight: "bold"}} >{props.value}</p>
+        <p style={{color: props.style, fontWeight: "bold", textShadow: "0px 0px 1.5px black"}} >{props.value}</p>
         </div>
     );
 }
