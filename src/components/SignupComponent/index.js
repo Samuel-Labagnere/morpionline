@@ -20,6 +20,7 @@ const SignupComponent = ({ userConnect }) => {
             localStorage.setItem("losses", JSON.stringify(0))
             localStorage.setItem("coins", JSON.stringify(0))
             localStorage.setItem("items", JSON.stringify(inventory))
+            localStorage.setItem("selection", "")
             setMsg(<p style={{color: "green", fontWeight: "bold"}}>Account created.</p>)
         }
     }

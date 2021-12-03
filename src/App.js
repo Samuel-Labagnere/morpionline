@@ -16,6 +16,12 @@ import './App.css';
 
 function App() {
   const [userConnect, setUserConnect] = React.useState(false)
+  const [selectedItem, setSelectedItem] = React.useState("")
+
+  const updateSelectedItem = (selection) => {
+    setSelectedItem(selection)
+    localStorage.setItem("selection", JSON.stringify(selection))
+  }
 
   return (
     <BrowserRouter>
@@ -25,7 +31,7 @@ function App() {
           <WelcomeComponent />
         </Route>
         <Route exact path="/account">
-          <AccountComponent userConnect={userConnect} setUserConnect={setUserConnect} />
+          <AccountComponent userConnect={userConnect} setUserConnect={setUserConnect} selectedItem={selectedItem} updateSelectedItem={updateSelectedItem} />
         </Route>
         <Route exact path="/signin">
           <SigninComponent setUserConnect={setUserConnect} />
@@ -34,7 +40,7 @@ function App() {
           <SignupComponent userConnect={userConnect} />
         </Route>
         <Route exact path="/play">
-          <PlayComponent userConnect={userConnect} />
+          <PlayComponent userConnect={userConnect} selectedItem={selectedItem} />
         </Route>
         <Route exact path="/shop">
           <ShopComponent userConnect={userConnect} />

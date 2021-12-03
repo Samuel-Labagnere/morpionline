@@ -2,7 +2,22 @@ import React from "react";
 import "./style.css";
 import ButtonComponent from "../ButtonComponent";
 
-const Account = ({ userConnect, setUserConnect }) => {
+const Account = ({ userConnect, setUserConnect, selectedItem, updateSelectedItem }) => {
+  let playerSelection = <p></p>
+
+  if(localStorage.getItem("items") !== ""){
+    playerSelection = JSON.parse(localStorage.getItem("items")).map((elem, index) => {
+      return(
+        <div className="item" key={index}>
+          <p>{elem}</p>
+          <ButtonComponent type="button" onClick={() => updateSelectedItem(elem)} value={JSON.parse(localStorage.getItem("selection")) === elem ? "Equipped" : "Equip"}/>
+        </div>
+      )
+    })
+  }else{
+    playerSelection = <p>No bought items.</p>
+  }
+
   if(userConnect){
     const regex = /./ig;
     let pass = JSON.parse(localStorage.getItem("pass"));
@@ -31,6 +46,13 @@ const Account = ({ userConnect, setUserConnect }) => {
             <div style={{display: "flex", flexDirection: "row", justifyContent: "baseline"}}>
               <p>Password : {hashedPass}</p>
               <ButtonComponent type="button" value="Change password" style={{marginLeft: "15px"}} />
+            </div>
+          </div>
+
+          <div id="player-selection">
+            <h3>Bought cosmetics:</h3>
+            <div id="selectionDiv">
+              {playerSelection}
             </div>
           </div>
 
