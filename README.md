@@ -12,7 +12,7 @@ You will just have to click on the case you wanna place your marker and try to f
 
 ## Warning /!\
 Due to technical reasons, the website is using Cookies to stock your account. Therefore, we will advise you not to use a password you really use. Because this password is not going to be encrypted. \
-And this Cookies system cause another problem: **You can't reload the website or use your navigator's nivagation.** \
+And this Cookies system cause another problem: **You can't reload the website or use your navigator's navigation.** \
 If you do so, you will be logged out and will have to log in again. If you want to access a part of the website you should be able to access it through the Routes page linked in the footer of the website. \
 And you can also access the homepage by clicking the website's name in the header.
 
